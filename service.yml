@@ -1,0 +1,17 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: spotify
+  namespace: default
+spec:
+  runLatest:
+    configuration:
+      revisionTemplate:
+        spec:
+          container:
+            image: docker.io/brianmmcclain/knative-assistant-action-spotify:latest
+            env:
+              - name: SPOTIFY_CLIENT
+                value: "REPLACE_ME"
+              - name: SPOTIFY_SECRET
+                value: "REPLACE_ME"
